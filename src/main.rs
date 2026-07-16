@@ -1287,6 +1287,13 @@ fn unix_nanos() -> u128 {
         .unwrap_or(0)
 }
 
+fn unix_millis() -> u128 {
+    SystemTime::now()
+        .duration_since(SystemTime::UNIX_EPOCH)
+        .map(|duration| duration.as_millis())
+        .unwrap_or(0)
+}
+
 fn trace_json(
     trace_id: &str,
     span_id: &str,
